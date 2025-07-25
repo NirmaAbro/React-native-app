@@ -1,161 +1,75 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  ScrollView,
-  Dimensions,
-} from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function BasicForm() {
-  const [form, setForm] = useState({
-    name: '',
-    age: '',
-    city: '',
-    state: '',
-    department: '',
-    designation: '',
-  });
 
-  const handleChange = (field:any, value:any) => {
-    setForm({ ...form, [field]: value });
-  };
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [Password, setPassword] = useState('');
+    const [display, setDisplay] = useState(false);
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', form);
-  };
+    const resetFormData = () => {
+        setDisplay(false);
+        setName('');
+        setEmail('');
+        setPassword('');
+    }
 
-  return (
-    <ScrollView contentContainerStyle={styles.screen}>
-      <View style={styles.container}>
-        <Text style={styles.heading}>Basic Form</Text>
+    return (
+        <View style={style.container}>
+            <Text style={{ fontSize: 20 }}>Simple form in react native</Text>
+            <View >
+                <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 5, marginBottom: 0, }}>Name</Text>
+                <TextInput value={name} onChangeText={text => setName(text)} placeholder="Enter your name" style={style.input} />
+            </View>
+            {/* email  */}
+            <View>
+                <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 5, marginBottom: 0, }}>Email</Text>
+                <TextInput value={email} onChangeText={text => setEmail(text)} placeholder="Enter your Email" style={style.input} />
+            </View>
+            {/* password  */}
+            <View>
+                <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 5, marginBottom: 0, }}>Password</Text>
+                <TextInput value={Password} secureTextEntry={true} onChangeText={text => setPassword(text)} placeholder="Enter your Password" style={style.input} />
+            </View>
 
-        {/* Fields */}
-        <View style={styles.row}>
-          <View style={styles.inputGroup}>
-            <Text style={styles.label}>Name</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter name"
-              value={form.name}
-              onChangeText={(val) => handleChange('name', val)}
-            />
-          </View>
-          <View style={styles.inputGroup}>
-            <Text style={styles.label}>Age</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter age"
-              keyboardType="numeric"
-              value={form.age}
-              onChangeText={(val) => handleChange('age', val)}
-            />
-          </View>
+            <View style={{ marginBottom: 10 }} >
+                <Button title="Print Details" color={'green'} onPress={() => setDisplay(true)} />
+            </View>
+            <Button title="Clear Details" color={'red'} onPress={resetFormData} />
+
+            <View>
+                {
+                    display ? <View>
+                        <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 5, marginBottom: 0, }}>Name: {name}</Text>
+                        <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 5, marginBottom: 0, }}>Email: {email}</Text>
+                        <Text style={{ fontSize: 20, marginTop: 10, marginLeft: 5, marginBottom: 0, }}>Password: {Password}</Text>
+                    </View> : null
+                }
+            </View>
         </View>
-
-        <View style={styles.row}>
-          <View style={styles.inputGroup}>
-            <Text style={styles.label}>City</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter city"
-              value={form.city}
-              onChangeText={(val) => handleChange('city', val)}
-            />
-          </View>
-          <View style={styles.inputGroup}>
-            <Text style={styles.label}>State</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter state"
-              value={form.state}
-              onChangeText={(val) => handleChange('state', val)}
-            />
-          </View>
-        </View>
-
-        <View style={styles.row}>
-          <View style={styles.inputGroup}>
-            <Text style={styles.label}>Department</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter department"
-              value={form.department}
-              onChangeText={(val) => handleChange('department', val)}
-            />
-          </View>
-          <View style={styles.inputGroup}>
-            <Text style={styles.label}>Designation</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Enter designation"
-              value={form.designation}
-              onChangeText={(val) => handleChange('designation', val)}
-            />
-          </View>
-        </View>
-
-        {/* Submit Button */}
-        <View style={styles.buttonWrapper}>
-          <Button title="Submit" onPress={handleSubmit} color="green" />
-        </View>
-      </View>
-    </ScrollView>
-  );
+    )
 }
 
-const { width } = Dimensions.get('window');
+const style = StyleSheet.create({
+    input: {
+        marginTop: 1,
+        marginBottom: 10,
+        borderColor: 'black',
+        borderWidth: 1,
+        padding: 10,
+        borderRadius: 5,
+    },
+    textInput: {
+        fontSize: 20,
 
-const styles = StyleSheet.create({
-  screen: {
-    paddingVertical: 40,
-    alignItems: 'center',
-  },
-  container: {
-    width: width * 0.9,
-    padding: 20,
-    backgroundColor: '#ffe4e1',
-    borderRadius: 15,
-    elevation: 5, // Android shadow
-    shadowColor: '#000', // iOS shadow
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-  },
-  heading: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    color: 'brown',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    gap: 15,
-    marginBottom: 15,
-  },
-  inputGroup: {
-    flex: 1,
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: 6,
-    fontWeight: '600',
-  },
-  input: {
-    height: 45,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    paddingHorizontal: 10,
-    borderRadius: 10,
-    backgroundColor: 'white',
-  },
-  buttonWrapper: {
-    marginTop: 30,
-    borderRadius: 10,
-    overflow: 'hidden',
-  },
-});
+    },
+    container: {
+        borderColor: 'black',
+        borderWidth: 1,
+        margin: 10,
+        borderRadius: 5,
+        padding: 10
+
+    }
+})
