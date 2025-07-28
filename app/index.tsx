@@ -1,5 +1,6 @@
 import BasicForm from "@/components/BasicForm";
 import Counter from "@/components/Counter";
+import ListwithMap from "@/components/ListwithMap";
 import Touchable from "@/components/Touchable";
 import React from "react";
 import { Button, Text, View } from "react-native";
@@ -26,7 +27,8 @@ export default function Index() {
       <Counter></Counter>
       <Button title="Click Me" onPress={handlePress} />
       <Touchable title="Custom Button" /> */}
-      <BasicForm />
+      {/* <BasicForm /> */}
+      <ListwithMap/>
     </View>
   );
 }
