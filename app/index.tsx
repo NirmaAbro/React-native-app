@@ -1,6 +1,8 @@
-import Sectionlist from "@/components/Sectionlist";
+import TouchableHighlightt from "@/components/TouchableHighlightt";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { Text, View } from "react-native";
+
 
 const Welcome = () => {
   return (
@@ -10,6 +12,8 @@ const Welcome = () => {
   );
 }
 
+
+const Stack = createNativeStackNavigator();
 
 export default function Index() {
 
@@ -26,9 +30,11 @@ export default function Index() {
       <Touchable title="Custom Button" /> */}
       {/* <BasicForm /> */}
       {/* <ListwithMap/>  */}
-      <Sectionlist/>
+      {/* <Sectionlist/>  */}
+      <TouchableHighlightt/> 
+
+
+
     </View>
   );
 }
-
-
