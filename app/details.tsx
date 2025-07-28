@@ -1,10 +1,20 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { useLocalSearchParams } from 'expo-router';
+import React from 'react';
+import { Text, View } from 'react-native';
+
 
 export default function Details() {
-  return (
-    <View>
-      <Text>Details</Text>
-    </View>
-  )
+    const { name, age } = useLocalSearchParams();
+
+    return (
+        <View>
+            {/* 🧠 Tip: */}
+            {/* params are always strings — so if you're passing numbers or objects, convert them using JSON.stringify() and JSON.parse() if needed. */}
+            <View style={{ padding: 20 }}>
+                <Text>User Details</Text>
+                <Text>Name: {name}</Text>
+                <Text>Age: {age}</Text>
+            </View>
+        </View>
+    )
 }
