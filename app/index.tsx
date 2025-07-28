@@ -1,9 +1,6 @@
-import BasicForm from "@/components/BasicForm";
-import Counter from "@/components/Counter";
-import ListwithMap from "@/components/ListwithMap";
-import Touchable from "@/components/Touchable";
+import Sectionlist from "@/components/Sectionlist";
 import React from "react";
-import { Button, Text, View } from "react-native";
+import { Text, View } from "react-native";
 
 const Welcome = () => {
   return (
@@ -28,7 +25,8 @@ export default function Index() {
       <Button title="Click Me" onPress={handlePress} />
       <Touchable title="Custom Button" /> */}
       {/* <BasicForm /> */}
-      <ListwithMap/>
+      {/* <ListwithMap/>  */}
+      <Sectionlist/>
     </View>
   );
 }

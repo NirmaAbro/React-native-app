@@ -1,5 +1,5 @@
 import React from 'react'
-import { ScrollView, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
 
 export default function ListwithMap() {
     const user = [
@@ -26,7 +26,7 @@ export default function ListwithMap() {
     ]
     return (
         <View>
-            <Text>ListwithMap</Text>
+            {/* <Text>ListwithMap</Text>
             <ScrollView>
             {
                 user.map((item) => {
@@ -40,7 +40,38 @@ export default function ListwithMap() {
                 })
             }
             </ScrollView>
-           
+            */}
+
+            <Text style={{ fontSize: 31 }}>Grid with Dynamic data</Text>
+            <View style={{ flex: 1, flexDirection: "row", flexWrap: "wrap" }}>
+                <Text style={style.text}>NIrma</Text>
+                <Text style={style.text}>NIrma</Text>
+                <Text style={style.text}>NIrma</Text>
+                <Text style={style.text}>NIrma</Text>
+                <Text style={style.text}>NIrma</Text>
+                <Text style={style.text}>NIrma</Text>
+                <Text style={style.text}>NIrma</Text>
+                <Text style={style.text}>NIrma</Text>
+                <Text style={style.text}>NIrma</Text>
+            </View>
+
         </View>
     )
 }
+
+
+const style = StyleSheet.create({
+    text: {
+        fontSize: 31,
+        color: "red",
+        backgroundColor: "yellow",
+        margin: 10,
+        padding: 10,
+        height: 100,
+        width: 100,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
+
+    }
+})
